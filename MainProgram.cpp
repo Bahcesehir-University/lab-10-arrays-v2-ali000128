@@ -36,6 +36,9 @@ void warmup_printNumbers()
 {
     cout << "\n--- Warm-up 1-A: Print 1 to 10 ---\n";
     // TODO: write a for-loop that prints 1 2 3 4 5 6 7 8 9 10
+    for(int i=1;i<=10;i++){
+        cout<<i<<" "; 
+    }
 }
 
 // Exercise 1-B
@@ -45,9 +48,21 @@ void warmup_sumFive()
     cout << "\n--- Warm-up 1-B: Sum of 5 numbers ---\n";
     int sum = 0;
     // TODO: declare an integer variable 'num'
+    int num;
+    cout<<"enter 5 integers\n";
+
     // TODO: loop 5 times: read num with cin, then add it to sum
+    for(int i=0;i<5;i++){
+        cout<<"["<<i+1<<"]";
+        cin>>num;
+        sum+=num;
+    }
     // TODO: print sum
+   cout<<"sum="<<sum<<"\n";
 }
+
+    
+
 
 // ============================================================
 //  SECTION 2 — Core Concepts  (≈ 10–15 min)
@@ -86,16 +101,21 @@ void concepts_demo()
 
     // TODO 2-A: declare an integer array called 'temps' of size 7
     //           and initialize it with: 22, 19, 25, 30, 28, 17, 21
-
+        int temps[7] ={22, 19, 25, 30, 28, 17, 21};
     // TODO 2-B: print all elements of 'temps' using a for-loop
-    cout << "Temperatures: ";
+    cout<< "Temperatures: ";
     // your loop here
-
+for(int i=0;i<7;i++){
+        cout<<temps[i];
+        if(i<6)cout<<", ";
+    }
     cout << "\n";
 
     // TODO 2-C: change the 4th element (index 3) of 'temps' to 35
     //           then print it to verify
-
+    temps[3]=35;
+    cout<<"after update,temps[3]"<<temps[3]<<"\n";
+     
 }
 
 // ============================================================
@@ -119,12 +139,24 @@ void exercise_fillArray()
 
     // TODO: ask the user to enter n (1 ≤ n ≤ 20)
     //       keep asking until n is in range
-
+     do{
+         cout<<"how many grades 1-20";
+         cin>>n;
+         if(n<1||n>MAX)
+           cout<<"out of range,please try again";
+     }while(n<1 ||n>MAX);
     // TODO: loop n times and read each grade into grades[i]
-
+ for(int i=0;i<n;i++){
+     cout<<"grade["<<i+1<<"]";
+     cin>>grades[i];
+ }
     // TODO: print all n grades on one line
     cout << "You entered: ";
     // your loop here
+    for(int i=0;i<n;i++){
+        cout<<grades[i];
+        if(i<n-1) cout<<" ";
+    }
     cout << "\n";
 }
 
@@ -148,17 +180,26 @@ void exercise_statistics()
     // TODO: compute the sum using a loop
     int sum = 0;
     // your loop here
-
+      for(int i=0;i<8;i++){
+          sum+=data[i];
+      }
     // TODO: compute the average (cast to double)
     double avg = 0.0;
     // your calculation here
-
+   avg=static_cast<double>(sum)/size;
     // TODO: find minimum — start with data[0] and update in a loop
     int minVal = data[0];
     // your loop here
-
+for(int i=1 ;i<size;i++){
+    if(data[i]<minVal)
+    minVal=data[i];
+}
     // TODO: find maximum — start with data[0] and update in a loop
     int maxVal = data[0];
+    for(int i=1 ;i<size;i++){
+        if(data[i]>maxVal)
+        maxVal=data[i];
+    }
     // your loop here
 
     cout << "Sum     : " << sum    << "\n";
@@ -184,7 +225,12 @@ void exercise_statistics()
 int linearSearch(int arr[], int size, int target)
 {
     // TODO: loop through arr; if arr[i] == target return i
+    for(int i=0;i<size;i++){
+        if(arr[i]==target)
+        return i;
+    }
     // TODO: if you finish the loop without finding it, return -1
+    
     return -1; // replace this placeholder
 }
 
@@ -196,8 +242,10 @@ void exercise_search()
 
     // TODO: call linearSearch for target = 27 and print the result
     //       e.g.  "27 found at index 4"  or  "27 not found"
+cout<<"found at index "<<linearSearch(values,10,27)<<"\n";
 
     // TODO: call linearSearch for target = 99 and print the result
+    cout<<"found at ındex "<<linearSearch(values,10,99)<<"\n";
 }
 
 // ----------------------------------------------------------
@@ -220,7 +268,10 @@ void exercise_countChar()
 
     int count = 0;
     // your loop here
-
+for(int i=0;i<len;i++){
+    if(text[i]=='a'||text[i=='A'])
+    count++;
+}
     cout << "Letter 'a'/'A' appears " << count << " times.\n";
 }
 
